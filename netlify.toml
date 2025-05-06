@@ -1,0 +1,12 @@
+# Configuração de redirecionamento do Netlify
+[[redirects]]
+  from = "/"
+  to = "/home.html"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/home.html"
+  status = 302
+  force = true 

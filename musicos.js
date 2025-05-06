@@ -176,6 +176,52 @@ document.addEventListener('DOMContentLoaded', () => {
         banda: Array(4).fill('')
     };
     
+    // Função para atualizar seleções e gerenciar opções disponíveis
+    function atualizarSelecoes(select) {
+        // Extrair informações do select
+        const cell = select.closest('.select-cell');
+        if (!cell) return;
+        
+        const house = parseInt(cell.dataset.house) - 1;
+        const type = cell.dataset.type;
+        const value = select.value;
+        
+        // Armazenar valor anterior para restaurar opções
+        const valorAnterior = userSelections[type][house];
+        
+        // Atualizar seleção do usuário
+        userSelections[type][house] = value;
+        
+        // Re-habilitar valor anterior em outros selects do mesmo tipo
+        if (valorAnterior) {
+            document.querySelectorAll(`select.${type}`).forEach(otherSelect => {
+                Array.from(otherSelect.options).forEach(option => {
+                    if (option.value === valorAnterior) {
+                        option.disabled = false;
+                    }
+                });
+            });
+        }
+        
+        // Desabilitar novo valor em outros selects do mesmo tipo
+        if (value) {
+            document.querySelectorAll(`select.${type}`).forEach(otherSelect => {
+                if (otherSelect !== select) {
+                    Array.from(otherSelect.options).forEach(option => {
+                        if (option.value === value) {
+                            option.disabled = true;
+                        }
+                    });
+                }
+            });
+        }
+        
+        // Verificar seleções
+        verificarCelulasEspecificas();
+        verificarDicas();
+        verificarCompletude();
+    }
+    
     // Verificar cada dica e adicionar os indicadores
     function verificarDicas() {
         const itens = document.querySelectorAll('.clues li');
@@ -273,8 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const value = select.value;
             
             if (value) {
-                userSelections[type][house] = value;
-                
                 // Verificar se a seleção está correta
                 const correto = value === solucao[house][type];
                 adicionarIndicadorResposta(cell, correto);
@@ -305,62 +349,160 @@ document.addEventListener('DOMContentLoaded', () => {
     // Limpar indicadores de resposta
     function limparIndicadoresResposta() {
         document.querySelectorAll('.select-cell').forEach(cell => {
-            cell.classList.remove('correct', 'incorrect');
-            const indicador = cell.querySelector('.indicator');
+            cell.classList.remove('resposta-correta', 'resposta-errada', 'resposta-errada-pulsante', 'success');
+            const indicador = cell.querySelector('.indicador-resposta');
             if (indicador) {
                 indicador.remove();
             }
+        });
+        
+        document.querySelectorAll('.clues li').forEach(item => {
+            item.classList.remove('dica-correta', 'dica-errada');
+            const indicador = item.querySelector('.dica-indicador');
+            if (indicador) {
+                indicador.remove();
+            }
+        });
+        
+        document.querySelectorAll('.house-title').forEach(title => {
+            title.classList.remove('success');
         });
     }
     
     // Adicionar indicador de resposta
     function adicionarIndicadorResposta(cell, correto) {
-        cell.classList.remove('correct', 'incorrect');
-        cell.classList.add(correto ? 'correct' : 'incorrect');
+        cell.classList.remove('resposta-correta', 'resposta-errada');
+        cell.classList.add(correto ? 'resposta-correta' : 'resposta-errada');
+        
+        // Criar o indicador visual
+        const indicador = document.createElement('span');
+        indicador.className = 'indicador-resposta';
+        indicador.textContent = correto ? '✓' : '✗';
         
         // Remover o indicador se existir
-        let indicador = cell.querySelector('.indicator');
-        if (indicador) {
-            indicador.remove();
+        let indicadorExistente = cell.querySelector('.indicador-resposta');
+        if (indicadorExistente) {
+            indicadorExistente.remove();
         }
+        
+        // Adicionar o novo indicador
+        cell.appendChild(indicador);
     }
     
     // Adicionar indicador de dica
     function adicionarIndicadorDica(item, correto) {
-        item.classList.remove('correct', 'incorrect');
-        item.classList.add(correto ? 'correct' : 'incorrect');
+        item.classList.remove('dica-correta', 'dica-errada');
+        item.classList.add(correto ? 'dica-correta' : 'dica-errada');
         
         // Remover o indicador se existir
-        let indicador = item.querySelector('.indicator');
+        let indicador = item.querySelector('.dica-indicador');
         if (indicador) {
             indicador.remove();
         }
+        
+        // Criar novo indicador
+        const indicadorNovo = document.createElement('span');
+        indicadorNovo.className = 'dica-indicador';
+        indicadorNovo.textContent = correto ? ' ✓' : ' ✗';
+        
+        // Adicionar o indicador ao item
+        item.appendChild(indicadorNovo);
     }
     
     // Exibir mensagem
     function exibirMensagem(texto, tipo) {
         mensagemEl.textContent = texto;
         mensagemEl.className = `message ${tipo}`;
+        mensagemEl.style.display = texto ? 'block' : 'none';
+        
+        // Rolar até a mensagem se tiver texto
+        if (texto) {
+            mensagemEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     }
     
     // Event Listeners
     selectores.forEach(select => {
         select.addEventListener('change', () => {
-            verificarCelulasEspecificas();
-            verificarDicas();
-            verificarCompletude();
+            atualizarSelecoes(select);
         });
     });
     
     verificarBtn.addEventListener('click', () => {
-        verificarCelulasEspecificas();
+        // Verificar se todas as posições foram preenchidas
+        const categorias = ['musico', 'instrumento', 'estilo', 'banda'];
+        const faltandoSelecoes = categorias.some(categoria => 
+            userSelections[categoria].some(valor => valor === '')
+        );
+        
+        if (faltandoSelecoes) {
+            exibirMensagem('Preencha todas as opções antes de verificar!', 'error');
+            return;
+        }
+        
+        // Limpar quaisquer indicadores anteriores
+        limparIndicadoresResposta();
+        
+        // Verificar cada resposta individualmente e adicionar indicadores
+        let totalAcertos = 0;
+        let totalItems = 4 * 4; // 4 músicos com 4 atributos cada
+        
+        categorias.forEach(categoria => {
+            for (let i = 0; i < 4; i++) {
+                const respostaCorreta = solucao[i][categoria];
+                const respostaUsuario = userSelections[categoria][i];
+                const estaCorrecto = respostaUsuario === respostaCorreta;
+                
+                if (estaCorrecto) {
+                    totalAcertos++;
+                }
+                
+                // Encontrar a célula correspondente e adicionar o indicador
+                const cell = document.querySelector(`.select-cell[data-house="${i+1}"][data-type="${categoria}"]`);
+                
+                if (cell) {
+                    adicionarIndicadorResposta(cell, estaCorrecto);
+                    
+                    // Destacar visualmente as células erradas com um efeito pulsante
+                    if (!estaCorrecto) {
+                        cell.classList.add('resposta-errada-pulsante');
+                    }
+                }
+            }
+        });
+        
+        // Verificar cada dica
         verificarDicas();
-        verificarCompletude();
+        
+        // Verificar se a resposta completa está correta
+        const solucionadoCompletamente = totalAcertos === totalItems;
+        
+        if (solucionadoCompletamente) {
+            exibirMensagem('Parabéns! Você resolveu o quebra-cabeça corretamente!', 'success');
+            
+            // Adicionar efeito visual de sucesso
+            document.querySelectorAll('.select-cell').forEach(cell => {
+                cell.classList.add('success');
+            });
+            
+            // Adicionar classe para títulos dos músicos
+            document.querySelectorAll('.house-title').forEach(title => {
+                title.classList.add('success');
+            });
+        } else {
+            const percentualAcerto = Math.round((totalAcertos / totalItems) * 100);
+            exibirMensagem(`Resposta incompleta. Você acertou ${totalAcertos} de ${totalItems} itens (${percentualAcerto}%). Corrija os itens marcados e tente novamente!`, 'error');
+        }
     });
     
     resetarBtn.addEventListener('click', () => {
         selectores.forEach(select => {
             select.value = '';
+            
+            // Re-habilitar todas as opções
+            Array.from(select.options).forEach(option => {
+                option.disabled = false;
+            });
         });
         
         userSelections = {

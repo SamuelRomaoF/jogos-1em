@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Lógica - Cientistas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-header">
+            <h1 class="game-level">Difícil <span class="game-type">Jogo de Lógica</span></h1>
+            <p class="game-description">Neste jogo de lógica de maior dificuldade você tem que seguir as dicas para descobrir qual cientista trabalha em qual área, fez qual descoberta e em qual época.</p>
+            <div class="difficulty-level">
+                <span class="level-dot active"></span>
+                <span class="level-dot active"></span>
+                <span class="level-dot active"></span>
+                <span class="level-dot active"></span>
+                <span class="level-dot"></span>
+            </div>
+        </div>
+        
+        <div class="game-board">
+            <div class="puzzle-grid">
+                <div class="houses-row">
+                    <div class="category-spacer"></div>
+                    <div class="house-title">Cientista #1</div>
+                    <div class="house-title">Cientista #2</div>
+                    <div class="house-title">Cientista #3</div>
+                    <div class="house-title">Cientista #4</div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Cientista</div>
+                    <div class="select-cell" data-house="1" data-type="cientista">
+                        <select>
+                            <option value="">Selecione o cientista</option>
+                            <option value="einstein">Einstein</option>
+                            <option value="newton">Newton</option>
+                            <option value="darwin">Darwin</option>
+                            <option value="marie">Marie Curie</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="cientista">
+                        <select>
+                            <option value="">Selecione o cientista</option>
+                            <option value="einstein">Einstein</option>
+                            <option value="newton">Newton</option>
+                            <option value="darwin">Darwin</option>
+                            <option value="marie">Marie Curie</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="cientista">
+                        <select>
+                            <option value="">Selecione o cientista</option>
+                            <option value="einstein">Einstein</option>
+                            <option value="newton">Newton</option>
+                            <option value="darwin">Darwin</option>
+                            <option value="marie">Marie Curie</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="cientista">
+                        <select>
+                            <option value="">Selecione o cientista</option>
+                            <option value="einstein">Einstein</option>
+                            <option value="newton">Newton</option>
+                            <option value="darwin">Darwin</option>
+                            <option value="marie">Marie Curie</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Área</div>
+                    <div class="select-cell" data-house="1" data-type="area">
+                        <select>
+                            <option value="">Selecione a área</option>
+                            <option value="fisica">Física</option>
+                            <option value="biologia">Biologia</option>
+                            <option value="quimica">Química</option>
+                            <option value="astronomia">Astronomia</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="area">
+                        <select>
+                            <option value="">Selecione a área</option>
+                            <option value="fisica">Física</option>
+                            <option value="biologia">Biologia</option>
+                            <option value="quimica">Química</option>
+                            <option value="astronomia">Astronomia</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="area">
+                        <select>
+                            <option value="">Selecione a área</option>
+                            <option value="fisica">Física</option>
+                            <option value="biologia">Biologia</option>
+                            <option value="quimica">Química</option>
+                            <option value="astronomia">Astronomia</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="area">
+                        <select>
+                            <option value="">Selecione a área</option>
+                            <option value="fisica">Física</option>
+                            <option value="biologia">Biologia</option>
+                            <option value="quimica">Química</option>
+                            <option value="astronomia">Astronomia</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Descoberta</div>
+                    <div class="select-cell" data-house="1" data-type="descoberta">
+                        <select>
+                            <option value="">Selecione a descoberta</option>
+                            <option value="relatividade">Teoria da Relatividade</option>
+                            <option value="gravidade">Lei da Gravidade</option>
+                            <option value="evolucao">Teoria da Evolução</option>
+                            <option value="radioatividade">Radioatividade</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="descoberta">
+                        <select>
+                            <option value="">Selecione a descoberta</option>
+                            <option value="relatividade">Teoria da Relatividade</option>
+                            <option value="gravidade">Lei da Gravidade</option>
+                            <option value="evolucao">Teoria da Evolução</option>
+                            <option value="radioatividade">Radioatividade</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="descoberta">
+                        <select>
+                            <option value="">Selecione a descoberta</option>
+                            <option value="relatividade">Teoria da Relatividade</option>
+                            <option value="gravidade">Lei da Gravidade</option>
+                            <option value="evolucao">Teoria da Evolução</option>
+                            <option value="radioatividade">Radioatividade</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="descoberta">
+                        <select>
+                            <option value="">Selecione a descoberta</option>
+                            <option value="relatividade">Teoria da Relatividade</option>
+                            <option value="gravidade">Lei da Gravidade</option>
+                            <option value="evolucao">Teoria da Evolução</option>
+                            <option value="radioatividade">Radioatividade</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Época</div>
+                    <div class="select-cell" data-house="1" data-type="epoca">
+                        <select>
+                            <option value="">Selecione a época</option>
+                            <option value="renascenca">Renascença</option>
+                            <option value="iluminismo">Iluminismo</option>
+                            <option value="revolucao">Revolução Industrial</option>
+                            <option value="moderna">Era Moderna</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="epoca">
+                        <select>
+                            <option value="">Selecione a época</option>
+                            <option value="renascenca">Renascença</option>
+                            <option value="iluminismo">Iluminismo</option>
+                            <option value="revolucao">Revolução Industrial</option>
+                            <option value="moderna">Era Moderna</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="epoca">
+                        <select>
+                            <option value="">Selecione a época</option>
+                            <option value="renascenca">Renascença</option>
+                            <option value="iluminismo">Iluminismo</option>
+                            <option value="revolucao">Revolução Industrial</option>
+                            <option value="moderna">Era Moderna</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="epoca">
+                        <select>
+                            <option value="">Selecione a época</option>
+                            <option value="renascenca">Renascença</option>
+                            <option value="iluminismo">Iluminismo</option>
+                            <option value="revolucao">Revolução Industrial</option>
+                            <option value="moderna">Era Moderna</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clues">
+                <h2>Dicas</h2>
+                <ul>
+                    <li>O cientista que desenvolveu a Teoria da Relatividade está na Era Moderna.</li>
+                    <li>O cientista que descobriu a Radioatividade está ao lado do cientista que desenvolveu a Lei da Gravidade.</li>
+                    <li>O cientista que desenvolveu a Teoria da Evolução está na Revolução Industrial.</li>
+                    <li>O cientista que desenvolveu a Teoria da Relatividade está exatamente à esquerda do cientista que descobriu a Radioatividade.</li>
+                    <li>O cientista Einstein trabalha na Física.</li>
+                    <li>O cientista Darwin está entre o cientista Newton e Marie Curie, nessa ordem.</li>
+                    <li>O cientista Newton está entre o cientista Einstein e o cientista Darwin, nessa ordem.</li>
+                    <li>A cientista Marie Curie trabalha na Química.</li>
+                    <li>O cientista que trabalha na Física está ao lado do cientista que trabalha na Biologia.</li>
+                    <li>O cientista que trabalha na Astronomia é o que desenvolveu a Lei da Gravidade.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="verificar">Verificar Respostas</button>
+            <button id="resetar">Resetar</button>
+            <button id="dica">Pedir Dica</button>
+        </div>
+        
+        <div id="mensagem" class="message"></div>
+        
+        <div class="navigation">
+            <a href="home.html" class="nav-button">← Página Inicial</a>
+            <a href="musicos.html" class="nav-button">← Jogo Anterior (Médio)</a>
+            <a href="caca-palavras.html" class="nav-button">Voltar para Caça-Palavras</a>
+        </div>
+    </div>
+
+    <script src="cientistas.js"></script>
+</body>
+</html> 

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Lógica - Músicos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-header">
+            <h1 class="game-level">Médio <span class="game-type">Jogo de Lógica</span></h1>
+            <p class="game-description">Neste jogo de lógica de dificuldade média você tem que seguir as dicas para descobrir qual músico toca qual instrumento, em qual estilo e em qual banda.</p>
+            <div class="difficulty-level">
+                <span class="level-dot active"></span>
+                <span class="level-dot active"></span>
+                <span class="level-dot active"></span>
+                <span class="level-dot"></span>
+                <span class="level-dot"></span>
+            </div>
+        </div>
+        
+        <div class="game-board">
+            <div class="puzzle-grid">
+                <div class="houses-row">
+                    <div class="category-spacer"></div>
+                    <div class="house-title">Músico #1</div>
+                    <div class="house-title">Músico #2</div>
+                    <div class="house-title">Músico #3</div>
+                    <div class="house-title">Músico #4</div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Músico</div>
+                    <div class="select-cell" data-house="1" data-type="musico">
+                        <select>
+                            <option value="">Selecione o músico</option>
+                            <option value="joao">João</option>
+                            <option value="maria">Maria</option>
+                            <option value="pedro">Pedro</option>
+                            <option value="ana">Ana</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="musico">
+                        <select>
+                            <option value="">Selecione o músico</option>
+                            <option value="joao">João</option>
+                            <option value="maria">Maria</option>
+                            <option value="pedro">Pedro</option>
+                            <option value="ana">Ana</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="musico">
+                        <select>
+                            <option value="">Selecione o músico</option>
+                            <option value="joao">João</option>
+                            <option value="maria">Maria</option>
+                            <option value="pedro">Pedro</option>
+                            <option value="ana">Ana</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="musico">
+                        <select>
+                            <option value="">Selecione o músico</option>
+                            <option value="joao">João</option>
+                            <option value="maria">Maria</option>
+                            <option value="pedro">Pedro</option>
+                            <option value="ana">Ana</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Instrumento</div>
+                    <div class="select-cell" data-house="1" data-type="instrumento">
+                        <select>
+                            <option value="">Selecione o instrumento</option>
+                            <option value="guitarra">Guitarra</option>
+                            <option value="bateria">Bateria</option>
+                            <option value="baixo">Baixo</option>
+                            <option value="teclado">Teclado</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="instrumento">
+                        <select>
+                            <option value="">Selecione o instrumento</option>
+                            <option value="guitarra">Guitarra</option>
+                            <option value="bateria">Bateria</option>
+                            <option value="baixo">Baixo</option>
+                            <option value="teclado">Teclado</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="instrumento">
+                        <select>
+                            <option value="">Selecione o instrumento</option>
+                            <option value="guitarra">Guitarra</option>
+                            <option value="bateria">Bateria</option>
+                            <option value="baixo">Baixo</option>
+                            <option value="teclado">Teclado</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="instrumento">
+                        <select>
+                            <option value="">Selecione o instrumento</option>
+                            <option value="guitarra">Guitarra</option>
+                            <option value="bateria">Bateria</option>
+                            <option value="baixo">Baixo</option>
+                            <option value="teclado">Teclado</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Estilo</div>
+                    <div class="select-cell" data-house="1" data-type="estilo">
+                        <select>
+                            <option value="">Selecione o estilo</option>
+                            <option value="rock">Rock</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="samba">Samba</option>
+                            <option value="blues">Blues</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="estilo">
+                        <select>
+                            <option value="">Selecione o estilo</option>
+                            <option value="rock">Rock</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="samba">Samba</option>
+                            <option value="blues">Blues</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="estilo">
+                        <select>
+                            <option value="">Selecione o estilo</option>
+                            <option value="rock">Rock</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="samba">Samba</option>
+                            <option value="blues">Blues</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="estilo">
+                        <select>
+                            <option value="">Selecione o estilo</option>
+                            <option value="rock">Rock</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="samba">Samba</option>
+                            <option value="blues">Blues</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Banda</div>
+                    <div class="select-cell" data-house="1" data-type="banda">
+                        <select>
+                            <option value="">Selecione a banda</option>
+                            <option value="banda1">Banda 1</option>
+                            <option value="banda2">Banda 2</option>
+                            <option value="banda3">Banda 3</option>
+                            <option value="banda4">Banda 4</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="banda">
+                        <select>
+                            <option value="">Selecione a banda</option>
+                            <option value="banda1">Banda 1</option>
+                            <option value="banda2">Banda 2</option>
+                            <option value="banda3">Banda 3</option>
+                            <option value="banda4">Banda 4</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="banda">
+                        <select>
+                            <option value="">Selecione a banda</option>
+                            <option value="banda1">Banda 1</option>
+                            <option value="banda2">Banda 2</option>
+                            <option value="banda3">Banda 3</option>
+                            <option value="banda4">Banda 4</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="banda">
+                        <select>
+                            <option value="">Selecione a banda</option>
+                            <option value="banda1">Banda 1</option>
+                            <option value="banda2">Banda 2</option>
+                            <option value="banda3">Banda 3</option>
+                            <option value="banda4">Banda 4</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clues">
+                <h2>Dicas</h2>
+                <ul>
+                    <li>O músico que toca Guitarra está na Banda 1.</li>
+                    <li>O músico que toca Bateria está ao lado do músico que toca Baixo.</li>
+                    <li>O músico que toca Teclado está na Banda 3.</li>
+                    <li>O músico que toca Guitarra está exatamente à esquerda do músico que toca Bateria.</li>
+                    <li>O músico João toca Guitarra.</li>
+                    <li>O músico Maria está entre o músico Pedro e o músico Ana, nessa ordem.</li>
+                    <li>O músico Pedro está entre o músico João e o músico Maria, nessa ordem.</li>
+                    <li>A música Ana toca Teclado.</li>
+                    <li>O músico que toca na Banda 1 está ao lado do músico que toca na Banda 2.</li>
+                    <li>O músico que toca na Banda 4 é o que toca Baixo.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="verificar">Verificar Respostas</button>
+            <button id="resetar">Resetar</button>
+            <button id="dica">Pedir Dica</button>
+        </div>
+        
+        <div id="mensagem" class="message"></div>
+        
+        <div class="navigation">
+            <a href="home.html" class="nav-button">← Página Inicial</a>
+            <a href="restaurantes.html" class="nav-button">← Jogo Anterior (Fácil)</a>
+            <a href="cientistas.html" class="nav-button">Próximo Jogo (Difícil) →</a>
+            <a href="caca-palavras.html" class="nav-button">Voltar para Caça-Palavras</a>
+        </div>
+    </div>
+
+    <script src="musicos.js"></script>
+</body>
+</html> 

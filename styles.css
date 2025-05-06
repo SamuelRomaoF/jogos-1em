@@ -1,0 +1,427 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.game-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.game-level {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+}
+
+.game-type {
+    font-size: 20px;
+    font-weight: normal;
+    color: #555;
+    margin-left: 10px;
+}
+
+.game-description {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.difficulty-level {
+    display: flex;
+    gap: 6px;
+}
+
+.level-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+
+.level-dot.active {
+    background-color: #3f51b5;
+}
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Layout com casas no topo e categorias à esquerda */
+.puzzle-grid {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.houses-row {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.category-spacer {
+    width: 150px;
+    min-width: 150px;
+}
+
+.house-title {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.category-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.category-label {
+    width: 150px;
+    min-width: 150px;
+    font-weight: bold;
+    color: #555;
+    font-size: 16px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.select-cell {
+    flex: 1;
+    padding: 5px;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    position: relative;
+}
+
+.select-cell.highlight {
+    background-color: rgba(76, 132, 255, 0.1);
+}
+
+.select-cell.category-related {
+    background-color: rgba(76, 132, 255, 0.05);
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4c84ff;
+    box-shadow: 0 0 0 2px rgba(76, 132, 255, 0.2);
+}
+
+/* Colorização das células e títulos das casas */
+/* Amarelo */
+.select-cell[data-color="amarela"] {
+    background-color: #fff9c4;
+    border: 1px solid #ffd54f;
+}
+
+.house-title[data-color="amarela"] {
+    background-color: #ffeb3b;
+    border: 1px solid #fbc02d;
+    color: #000;
+}
+
+.select-cell[data-color="amarela"] select {
+    background-color: #fffde7;
+    border-color: #ffd54f;
+}
+
+/* Azul */
+.select-cell[data-color="azul"] {
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
+}
+
+.house-title[data-color="azul"] {
+    background-color: #2196f3;
+    border: 1px solid #1976d2;
+    color: white;
+}
+
+.select-cell[data-color="azul"] select {
+    background-color: #e3f2fd;
+    border-color: #90caf9;
+}
+
+/* Vermelho */
+.select-cell[data-color="vermelha"] {
+    background-color: #ffebee;
+    border: 1px solid #ef9a9a;
+}
+
+.house-title[data-color="vermelha"] {
+    background-color: #f44336;
+    border: 1px solid #d32f2f;
+    color: white;
+}
+
+.select-cell[data-color="vermelha"] select {
+    background-color: #ffebee;
+    border-color: #ef9a9a;
+}
+
+/* Preto */
+.select-cell[data-color="preta"] {
+    background-color: #424242;
+    color: white;
+    border: 1px solid #212121;
+}
+
+.house-title[data-color="preta"] {
+    background-color: #212121;
+    border: 1px solid #000;
+    color: white;
+}
+
+.select-cell[data-color="preta"] select {
+    background-color: #616161;
+    color: white;
+    border-color: #212121;
+}
+
+.clues {
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    padding: 20px;
+    border-left: 4px solid #4c84ff;
+}
+
+.clues h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.clues ul {
+    list-style-position: inside;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 10px;
+}
+
+.clues li {
+    line-height: 1.5;
+    color: #444;
+    font-size: 15px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#verificar {
+    background-color: #4caf50;
+    color: white;
+}
+
+#verificar:hover {
+    background-color: #45a049;
+}
+
+#resetar {
+    background-color: #f44336;
+    color: white;
+}
+
+#resetar:hover {
+    background-color: #e53935;
+}
+
+#dica {
+    background-color: #2196f3;
+    color: white;
+}
+
+#dica:hover {
+    background-color: #1e88e5;
+}
+
+.message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+    display: none;
+}
+
+.message.success {
+    display: block;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.message.error {
+    display: block;
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+.message.hint {
+    display: block;
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #90caf9;
+}
+
+#verificar.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); box-shadow: 0 0 10px rgba(76, 175, 80, 0.7); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .houses-row {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+    
+    .house-title {
+        margin-bottom: 10px;
+    }
+    
+    .category-row {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    
+    .category-label {
+        width: 100%;
+        text-align: center;
+        padding-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .select-cell {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .category-spacer {
+        display: none;
+    }
+    
+    .clues ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+.navigation {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3f51b5;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin: 5px;
+    text-align: center;
+}
+
+.nav-button:hover {
+    background-color: #303f9f;
+}
+
+@media (max-width: 768px) {
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-button {
+        width: 100%;
+        max-width: 300px;
+    }
+} 

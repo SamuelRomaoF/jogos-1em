@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Lógica - Restaurantes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-header">
+            <h1 class="game-level">Fácil <span class="game-type">Jogo de Lógica</span></h1>
+            <p class="game-description">Neste jogo de lógica fácil você tem que seguir as dicas para descobrir qual restaurante serve qual prato, com qual chef e qual bebida.</p>
+            <div class="difficulty-level">
+                <span class="level-dot active"></span>
+                <span class="level-dot active"></span>
+                <span class="level-dot"></span>
+                <span class="level-dot"></span>
+                <span class="level-dot"></span>
+            </div>
+        </div>
+        
+        <div class="game-board">
+            <div class="puzzle-grid">
+                <div class="houses-row">
+                    <div class="category-spacer"></div>
+                    <div class="house-title">Restaurante #1</div>
+                    <div class="house-title">Restaurante #2</div>
+                    <div class="house-title">Restaurante #3</div>
+                    <div class="house-title">Restaurante #4</div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Estilo</div>
+                    <div class="select-cell" data-house="1" data-type="estilo">
+                        <select>
+                            <option value="">Selecione o estilo</option>
+                            <option value="italiano">Italiano</option>
+                            <option value="japones">Japonês</option>
+                            <option value="mexicano">Mexicano</option>
+                            <option value="brasileiro">Brasileiro</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="estilo">
+                        <select>
+                            <option value="">Selecione o estilo</option>
+                            <option value="italiano">Italiano</option>
+                            <option value="japones">Japonês</option>
+                            <option value="mexicano">Mexicano</option>
+                            <option value="brasileiro">Brasileiro</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="estilo">
+                        <select>
+                            <option value="">Selecione o estilo</option>
+                            <option value="italiano">Italiano</option>
+                            <option value="japones">Japonês</option>
+                            <option value="mexicano">Mexicano</option>
+                            <option value="brasileiro">Brasileiro</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="estilo">
+                        <select>
+                            <option value="">Selecione o estilo</option>
+                            <option value="italiano">Italiano</option>
+                            <option value="japones">Japonês</option>
+                            <option value="mexicano">Mexicano</option>
+                            <option value="brasileiro">Brasileiro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Chef</div>
+                    <div class="select-cell" data-house="1" data-type="chef">
+                        <select>
+                            <option value="">Selecione o chef</option>
+                            <option value="maria">Maria</option>
+                            <option value="joao">João</option>
+                            <option value="ana">Ana</option>
+                            <option value="pedro">Pedro</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="chef">
+                        <select>
+                            <option value="">Selecione o chef</option>
+                            <option value="maria">Maria</option>
+                            <option value="joao">João</option>
+                            <option value="ana">Ana</option>
+                            <option value="pedro">Pedro</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="chef">
+                        <select>
+                            <option value="">Selecione o chef</option>
+                            <option value="maria">Maria</option>
+                            <option value="joao">João</option>
+                            <option value="ana">Ana</option>
+                            <option value="pedro">Pedro</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="chef">
+                        <select>
+                            <option value="">Selecione o chef</option>
+                            <option value="maria">Maria</option>
+                            <option value="joao">João</option>
+                            <option value="ana">Ana</option>
+                            <option value="pedro">Pedro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Prato</div>
+                    <div class="select-cell" data-house="1" data-type="prato">
+                        <select>
+                            <option value="">Selecione o prato</option>
+                            <option value="pizza">Pizza</option>
+                            <option value="sushi">Sushi</option>
+                            <option value="taco">Taco</option>
+                            <option value="feijoada">Feijoada</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="prato">
+                        <select>
+                            <option value="">Selecione o prato</option>
+                            <option value="pizza">Pizza</option>
+                            <option value="sushi">Sushi</option>
+                            <option value="taco">Taco</option>
+                            <option value="feijoada">Feijoada</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="prato">
+                        <select>
+                            <option value="">Selecione o prato</option>
+                            <option value="pizza">Pizza</option>
+                            <option value="sushi">Sushi</option>
+                            <option value="taco">Taco</option>
+                            <option value="feijoada">Feijoada</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="prato">
+                        <select>
+                            <option value="">Selecione o prato</option>
+                            <option value="pizza">Pizza</option>
+                            <option value="sushi">Sushi</option>
+                            <option value="taco">Taco</option>
+                            <option value="feijoada">Feijoada</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="category-row">
+                    <div class="category-label">Bebida</div>
+                    <div class="select-cell" data-house="1" data-type="bebida">
+                        <select>
+                            <option value="">Selecione a bebida</option>
+                            <option value="vinho">Vinho</option>
+                            <option value="sake">Sake</option>
+                            <option value="tequila">Tequila</option>
+                            <option value="caipirinha">Caipirinha</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="2" data-type="bebida">
+                        <select>
+                            <option value="">Selecione a bebida</option>
+                            <option value="vinho">Vinho</option>
+                            <option value="sake">Sake</option>
+                            <option value="tequila">Tequila</option>
+                            <option value="caipirinha">Caipirinha</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="3" data-type="bebida">
+                        <select>
+                            <option value="">Selecione a bebida</option>
+                            <option value="vinho">Vinho</option>
+                            <option value="sake">Sake</option>
+                            <option value="tequila">Tequila</option>
+                            <option value="caipirinha">Caipirinha</option>
+                        </select>
+                    </div>
+                    <div class="select-cell" data-house="4" data-type="bebida">
+                        <select>
+                            <option value="">Selecione a bebida</option>
+                            <option value="vinho">Vinho</option>
+                            <option value="sake">Sake</option>
+                            <option value="tequila">Tequila</option>
+                            <option value="caipirinha">Caipirinha</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clues">
+                <h2>Dicas</h2>
+                <ul>
+                    <li>O restaurante Italiano serve Pizza.</li>
+                    <li>O restaurante Japonês está ao lado do restaurante Mexicano.</li>
+                    <li>O restaurante Brasileiro serve Caipirinha.</li>
+                    <li>O restaurante que serve Sushi está exatamente à esquerda do restaurante que serve Taco.</li>
+                    <li>O chef João trabalha no restaurante Italiano.</li>
+                    <li>O chef Maria está entre o chef Ana e o chef Pedro, nessa ordem.</li>
+                    <li>O chef Pedro está entre o chef João e o chef Maria, nessa ordem.</li>
+                    <li>A chef Ana trabalha no restaurante Japonês.</li>
+                    <li>O restaurante que serve Vinho está ao lado do restaurante que serve Sake.</li>
+                    <li>O restaurante que serve Tequila é o Mexicano.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="verificar">Verificar Respostas</button>
+            <button id="resetar">Resetar Jogo</button>
+            <button id="dica">Pedir Dica</button>
+        </div>
+        
+        <div id="mensagem" class="message"></div>
+        
+        <div class="navigation">
+            <a href="home.html" class="nav-button">← Página Inicial</a>
+            <a href="index.html" class="nav-button">← Jogo Clássico</a>
+            <a href="musicos.html" class="nav-button">Próximo Jogo (Médio) →</a>
+            <a href="caca-palavras.html" class="nav-button">Voltar para Caça-Palavras</a>
+        </div>
+    </div>
+
+    <script src="restaurantes.js"></script>
+</body>
+</html> 
